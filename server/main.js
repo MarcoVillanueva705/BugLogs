@@ -42,6 +42,20 @@ server.use("/api/bugs", new BugController().router);
 
 //NOTE Everything below this line always stays the same
 
+
+// NOTE DO NOT touch! This is for testing only
+
+import cleanupService from "./utils/CleanupService";
+
+server.get('/cleanup', async (req, res, next) => {
+  try {
+    let data = await cleanupService.cleanupAsync()
+    res.send(data)
+  } catch (e) {
+    next(e)
+  }
+})
+
 //NOTE Default error handler, catches all routes with an error attached
 server.use((error, req, res, next) => {
   res.status(error.status || 400).send({ error: { message: error.message } });

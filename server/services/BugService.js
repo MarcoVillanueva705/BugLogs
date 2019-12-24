@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import Bug from "../models/Bug";
-import ApiError from "../utils/ApiError";
+import ApiError from "../utils/CleanupService";
 
 const _repository = mongoose.model("Bug", Bug);
 
