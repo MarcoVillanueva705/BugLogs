@@ -25,6 +25,13 @@ const routes = [
     name: "bugs",
     component: Bugs
   },
+  // {
+
+  // //   path: "/bugs/:id",
+  // //   name: "bugDetails",
+  // //   component: BugDetails
+
+  // // },
   {
     path: "*", //saftey net that returns bad routes back to the home
     redirect: "/"

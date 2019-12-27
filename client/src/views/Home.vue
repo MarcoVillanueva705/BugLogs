@@ -5,9 +5,25 @@
         <h1>Bug Tracker</h1>
       </div>
       <div class="col-6">
-        <button class="btn btn-success" type="submit">Report</button>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="@Report">
+        Report
+      </button>
       </div>
     </div>
+      
+    <div class="row">
+      <div class="col-12">
+        <form @submit.prevent="addBug">
+          <input required type="text" v-model="newBug.title" placeholder="title" />
+          <input required type="text" v-model="newBug.reportedBy" placeholder="reported by" />
+          <input required type="text" v-model="newBug.comment" placeholder="comment" />
+          <input required type="text" v-model="newBug.status" placeholder="status" />
+          <input required type="text" v-model="newBug.lastModified" placeholder="last modified" />
+          <button class="btn btn-success" type="submit">Add Bug</button>
+        </form>
+      </div>   
+    </div>
+
     <main class="col-12">
       <div class="row bugs">
         <div class="col" v-for="bug in bugs" :key="bug.id">
@@ -17,6 +33,7 @@
       </div>
     </main>
   </div>
+
 </template>
 
 <script>
@@ -30,35 +47,34 @@ export default {
     //runs when the component is first put (mounted) on the dom
     this.$store.dispatch("getBugs");
   },
-  // data() {
-  //   return {
-  //     newBug: {
-  //       title: "",
-  //       reportedBy: "",
-  //       status: "",
-  //       lastModified: ""
-  //     }
-  //   };
-  // },
-  // methods: {
-  //   addBug() {
-  //     let bug = { ...this.newBug }; //NOTE makes a copy of the car data object
-  //     this.$store.dispatch("addBug", bug);
-  //     this.newBug = {
-  //       title: "",
-  //       reportedBy: "",
-  //       status: "",
-  //       lastModified: 0
-  //     };
-  //   }
-  // },
+  data() {
+    return {
+      newBug: {
+        title: "",
+        reportedBy: "",
+        comment: "",
+        status: "",
+        lastModified: ""
+      }
+    };
+  },
+  methods: {
+    addBug() {
+      let bug = { ...this.newBug }; //NOTE makes a copy of the bug data object
+      this.$store.dispatch("addBug", bug);
+      this.newBug = {
+        title: "",
+        reportedBy: "",
+        comment: "",
+        status: "",
+        lastModified: ""
+      };
+    }
+  },
   computed: {
     bugs() {
       return this.$store.state.bugs;
     }
-    // unsoldCars() {
-    //   this.cars.filter(c => !car.sold);
-    // }
   },
   components: {
     BugComponent,
