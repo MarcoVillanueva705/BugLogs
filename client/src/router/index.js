@@ -5,6 +5,10 @@ import Home from "../views/Home";
 //@ts-ignore
 import Bugs from "../views/Bugs";
 
+//@ts-ignore
+import BugDetails from "../views/BugDetails";
+
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -25,13 +29,13 @@ const routes = [
     name: "bugs",
     component: Bugs
   },
-  // {
+   {
 
-  // //   path: "/bugs/:id",
-  // //   name: "bugDetails",
-  // //   component: BugDetails
+    path: "/bugs/:id",
+    name: "bugDetails",
+    component: BugDetails
 
-  // // },
+  },
   {
     path: "*", //saftey net that returns bad routes back to the home
     redirect: "/"

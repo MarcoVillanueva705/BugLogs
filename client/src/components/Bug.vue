@@ -1,35 +1,25 @@
 <template>
-  <div class="row">
-      <div class="col-4">
-        <h2>Current Bugs</h2>
-      </div>
-      <div class="col-8">
-      </div>
+<div class="bug container-fluid">
       <div class="row bug">
-        <div class="col-3">
-        <h4>Title</h4>
+        <div class="col-2">
+        <router-link :to="{ name: 'bugDetails', params: { id: bugData.id } }">
         <p>{{ bugData.title }}</p>
+        </router-link>
         </div>
-      </div>
-        <div class="row bug">
-          <div class="col-3">
-          <h4>Reported By</h4>
+          <div class="col-2">
           <p>{{ bugData.reportedBy }}</p>
           </div>
-        </div>
-        <div class="row bug">
-          <div class="col-3">
-          <h4>Status</h4>
+          <div class="col-2">
+          <p>{{ bugData.comment }}</p>
+          </div>
+          <div class="col-2">
           <p>{{ bugData.status }}</p>
           </div>
-        </div>
-        <div class="row bug">
-          <div class="col-3">
-          <h4>Last Modified</h4>
+          <div class="col-2">
           <p>{{ bugData.lastModified }}</p>
           </div>
         </div>
-  </div>
+</div>
   
 </template>
 
@@ -49,12 +39,3 @@ export default {
   // }
 };
 </script>
-
-<style scoped>
-img {
-  max-width: 100%;
-}
-.greyscale {
-  filter: grayscale(1);
-}
-</style>

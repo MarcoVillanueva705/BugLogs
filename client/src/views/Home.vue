@@ -9,8 +9,13 @@
         Report
       </button>
       </div>
+      <div class="col-4">
+        <h2>Current Bugs</h2>
+      </div>
+      <div class="col-8">
+      </div>
     </div>
-      
+   
     <div class="row">
       <div class="col-12">
         <form @submit.prevent="addBug">
@@ -23,6 +28,25 @@
         </form>
       </div>   
     </div>
+      
+      <div class="row bug">
+          <div class="col-2">
+          <h4>Title</h4>
+          </div>
+          <div class="col-2">
+          <h4>Reported By</h4>
+          </div>
+          <div class="col-2">
+          <h4>Comment</h4>
+          </div>
+          <div class="col-2">
+          <h4>Status</h4>
+          </div>
+          <div class="col-2">
+          <h4>Last Modified</h4>
+          </div>
+      </div>
+      
 
     <main class="col-12">
       <div class="row bugs">
