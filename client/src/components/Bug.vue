@@ -1,6 +1,6 @@
 <template>
-<div class="bug container-fluid">
-      <div class="row bug">
+
+      <div class="row">
         <div class="col-2">
         <router-link :to="{ name: 'bugDetails', params: { id: bugData.id } }">
         <p>{{ bugData.title }}</p>
@@ -18,8 +18,10 @@
           <div class="col-2">
           <p>{{ bugData.lastModified }}</p>
           </div>
+          <div class="col-2">
+          </div>
         </div>
-</div>
+
   
 </template>
 

@@ -29,7 +29,7 @@
       </div>   
     </div>
       
-      <div class="row bug">
+     <div class="row">
           <div class="col-2">
           <h4>Title</h4>
           </div>
@@ -45,16 +45,16 @@
           <div class="col-2">
           <h4>Last Modified</h4>
           </div>
+          <div class="col-2">
+          </div>
       </div>
       
 
-    <main class="col-12">
-      <div class="row bugs">
-        <div class="col" v-for="bug in bugs" :key="bug.id">
+    <main class="row-bugs">
+        <div class="col-12" v-for="bug in bugs" :key="bug.id">
           <!-- Props are data passed from parent to child with :propName="DATA" -->
           <bug-component :bugData="bug" />
         </div>
-      </div>
     </main>
   </div>
 
