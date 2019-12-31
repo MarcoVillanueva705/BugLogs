@@ -24,11 +24,11 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
   },
-  {
-    path: "/bugs",
-    name: "bugs",
-    component: Bugs
-  },
+  // {
+  //   path: "/bugs",
+  //   name: "bugs",
+  //   component: Bugs
+  // },
    {
 
     path: "/bugs/:id",
@@ -36,6 +36,13 @@ const routes = [
     component: BugDetails
 
   },
+  // {
+
+  //   path: "/bugs/:id/notes",
+  //   name: "bugDetails",
+  //   component: BugDetails
+
+  // },
   {
     path: "*", //saftey net that returns bad routes back to the home
     redirect: "/"

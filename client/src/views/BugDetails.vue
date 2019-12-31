@@ -20,6 +20,7 @@
          <form @submit.prevent="addNote">
           <input type="text" placeholder="message" v-model="newNote.content" required>
           <input type="text" placeholder="name" v-model="newNote.reportedBy" required>
+          <button type="submit">Submit</button>
          </form>
       </div>
     </header>
@@ -46,11 +47,18 @@
         <h4 class="float-right">Delete</h4>
         </div>
       </div>
+    <main class="row-notes">
+        <div class="col-12" v-for="note in notes" :key="note.id">
+          <!-- Props are data passed from parent to child with :propName="DATA" -->
+          <note-component :noteData="note" />
+        </div>
+    </main>
     </footer>
   </div>
 </template>
 
 <script>
+//import NoteComponent from "@components/Note";
 export default {
   name: "bugDetails",
 
@@ -66,13 +74,20 @@ export default {
   },
   mounted() {
     this.$store.dispatch("getBugById", this.$route.params.id);
+    this.$store.dispatch("getNotesByBugId", this.$route.params.id);
   },
 
   computed: {
     bug() {
       return this.$store.state.activeBug;
+    },
+    notes() {
+      return this.$store.state.activeNote;
     }
   },
+  // components: {
+  //   NoteComponent
+  // },
   methods: {
     addNote() {
       let note =  {...this.newNote};

@@ -14,7 +14,8 @@ export default new Vuex.Store({
   state: {
     bugs: [],
     activeBug: {},
-    notes: []
+    notes: [],
+    activeNote: {}
   },
   mutations: {
     setAllBugs(state, data) {
@@ -29,7 +30,9 @@ export default new Vuex.Store({
     addNote(state, note) {
       state.notes.push(note);
     },    
-
+    setActiveNote(state, note) {
+      state.activeNote = note;
+  },
   },
   actions: {
     async getBugs({ commit, dispatch }) {
@@ -47,11 +50,15 @@ export default new Vuex.Store({
     },
     async addNote({ commit, dispatch }, note) {
       let res = await _api.post("notes", note);
-      // dispatch("getAllBugs"); //works but is a second call to the server
+      // dispatch("getAllNotes"); //works but is a second call to the server
       commit("addNote", res.data);
     },
+    async getNotesByBugId({ commit, dispatch }, id) {
+      let res = await _api.get("bugs/" + id + "/notes");
+      commit("setActiveNote", res.data);
+    }
     // async editBug({commit, dispatch}, update) {
-    //   let bug = 
+    //   let bug =  ""
     //   let res =  await _api.put("bugs", update);
     //   commit("addBug", res.data);
     // }
