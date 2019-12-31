@@ -3,7 +3,8 @@ import express from "express";
 import cors from "cors";
 import bp from "body-parser";
 import DbContext from "./db/dbConfig";
-import BugController from "./controllers/BugController"
+import BugController from "./controllers/BugController";
+import NoteController from "./controllers/NoteController";
 
 const port = process.env.PORT || 3000;
 
@@ -39,7 +40,7 @@ server.use(bp.json());
 
 //NOTE remember the forward slash at the start of your path!
 server.use("/api/bugs", new BugController().router);
-// server.use("/api/notes,", new NoteController().router);
+server.use("/api/notes", new NoteController().router);
 
 //NOTE Everything below this line always stays the same
 
@@ -47,7 +48,6 @@ server.use("/api/bugs", new BugController().router);
 // NOTE DO NOT touch! This is for testing only
 
 import cleanupService from "./utils/CleanupService";
-import NoteController from "./controllers/NoteController";
 
 server.get('/cleanup', async (req, res, next) => {
   try {

@@ -3,9 +3,6 @@ import VueRouter from "vue-router";
 //@ts-ignore
 import Home from "../views/Home";
 //@ts-ignore
-import Bugs from "../views/Bugs";
-
-//@ts-ignore
 import BugDetails from "../views/BugDetails";
 
 
@@ -36,6 +33,7 @@ const routes = [
     component: BugDetails
 
   },
+
   // {
 
   //   path: "/bugs/:id/notes",

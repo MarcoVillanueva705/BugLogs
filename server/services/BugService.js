@@ -22,17 +22,19 @@ class BugService {
     return data;
   }
 
-  async createNote(rawData) {
-    let data = await _repository.create(rawData);
-    return data;
-  }
-
   async edit(id, update) {
     let data = await _repository.findOneAndUpdate({ _id: id }, update, {
       new: true
     });
     if (!data) {
        throw new ApiError("Invalid ID", 400);
+    }
+    return data;
+  }
+  async getNotesByBugId(bugId) {
+    let data = await _repository.find({ bugId });
+    if (!data) {
+      throw new Error("Invalid Id");
     }
     return data;
   }

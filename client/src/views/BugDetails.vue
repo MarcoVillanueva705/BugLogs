@@ -58,7 +58,7 @@
 </template>
 
 <script>
-//import NoteComponent from "@components/Note";
+//  import NoteComponent from "@components/Note";
 export default {
   name: "bugDetails",
 
@@ -85,13 +85,14 @@ export default {
       return this.$store.state.activeNote;
     }
   },
+
   // components: {
   //   NoteComponent
   // },
   methods: {
     addNote() {
       let note =  {...this.newNote};
-      this.$store.dispatch("addNote", note);
+      this.$store.dispatch("createNote", note);
       this.newNote = {
         content: "",
         reportedBy:"",
