@@ -1,5 +1,6 @@
 import express from "express";
 import bugService from "../services/BugService";
+import noteService from "../services/NoteService";
 
 export default class BugController {
   constructor() {
@@ -49,7 +50,7 @@ async create(req, res, next) {
 
   async getNotesByBugId(req, res, next) {
     try {
-      let data = await bugService.getNotesByBugId(req.params.id);
+      let data = await noteService.getNotesByBugId(req.params.id);
       return res.send(data);
     } catch (error) {
       next(error);

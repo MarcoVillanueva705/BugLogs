@@ -31,13 +31,7 @@ class BugService {
     }
     return data;
   }
-  async getNotesByBugId(bugId) {
-    let data = await _repository.find({ bugId });
-    if (!data) {
-      throw new Error("Invalid Id");
-    }
-    return data;
-  }
+ 
 
 }
 
