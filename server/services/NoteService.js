@@ -22,8 +22,8 @@ class NoteService {
     return data;
   }
 
-  async getNotesByBugId(bugId) {
-    let data = await _repository.find({ bugId });
+  async getNotesByBugId(id) {
+    let data = await _repository.findById({ id });
     if (!data) {
       throw new Error("Invalid Id");
     }

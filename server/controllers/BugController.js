@@ -10,7 +10,7 @@ export default class BugController {
       .get("", this.getAll)
       .get("/:id", this.getById)
       .post("", this.create) //api/bugs
-      .get(":id/notes", this.getNotesByBugId)//returns all notes for a given bug id
+      .get("/:id/notes", this.getNotesByBugId)//returns all notes for a given bug id
   }
 
   async getAll(req, res, next) {
