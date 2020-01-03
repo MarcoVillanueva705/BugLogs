@@ -34,6 +34,14 @@ const routes = [
 
   },
 
+  {
+
+    path: "/notes",
+    name: "bugDetails",
+    component: BugDetails
+
+  },
+
   // {
 
   //   path: "/bugs/:id/notes",

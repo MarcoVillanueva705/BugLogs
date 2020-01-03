@@ -54,7 +54,7 @@ export default new Vuex.Store({
       commit("createNote", res.data);
     },
     async getNotesByBugId({ commit, dispatch }, id) {
-      let res = await _api.get("bugs/" + id + "/notes");
+      let res = await _api.get("bugs/"+ id + "/notes");
       commit("setActiveNote", res.data);
     }
     // async editBug({commit, dispatch}, update) {

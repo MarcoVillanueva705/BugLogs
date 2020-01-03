@@ -1,6 +1,9 @@
 import mongoose from "mongoose";
 import Note from "../models/Note";
 import ApiError from "../utils/ApiError";
+// import Bug from "../models/Bug";
+// import bugService from "./BugService";
+// import BugController from "../controllers/BugController";
 
 const _repository = mongoose.model("Note", Note);
 
@@ -22,13 +25,15 @@ class NoteService {
     return data;
   }
 
-  async getNotesByBugId(id) {
-    let data = await _repository.findById({ id });
+  async getNotesByBugId(noteId, bug, id, note) {
+    
+    let data = await _repository.find({ bug:id })
+
     if (!data) {
       throw new Error("Invalid Id");
     }
     return data;
-  }
+}
 
   // async edit(id, update) {
   //   let data = await _repository.findOneAndUpdate({ _id: id }, update, {
