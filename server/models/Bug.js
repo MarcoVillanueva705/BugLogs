@@ -5,7 +5,6 @@ const ObjectId = Schema.Types.ObjectId;
 const Bug = new Schema(
   {
     title: { type: String, required: true, maxlength: 20 },
-    noteId: { type: ObjectId, ref: "Note", required: true },
     comment: { type: String, required: true, maxlength: 200 },
     reportedBy: { type: String, required: true },
     status: { type: String, required: true },

@@ -66,8 +66,9 @@ export default {
     return {
       newNote:{
         content: "",
+        bug: this.$route.params.id,
         reportedBy:"",
-        flagged: ""
+        flagged: ["pending", "completed", "rejected"].toString
       },
        
     }
@@ -75,6 +76,7 @@ export default {
   mounted() {
     this.$store.dispatch("getBugById", this.$route.params.id);
     this.$store.dispatch("getNotesByBugId", this.$route.params.id);
+
   },
 
   computed: {
@@ -95,8 +97,9 @@ export default {
       this.$store.dispatch("createNote", note);
       this.newNote = {
         content: "",
+        bug: this.$route.params.id,
         reportedBy:"",
-        flagged: ""
+        flagged: ["pending", "completed", "rejected"].toString
       };
     }
   }
