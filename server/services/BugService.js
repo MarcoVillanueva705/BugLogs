@@ -32,7 +32,7 @@ class BugService {
     return data;
   }
  
-
+  
 }
 
 const bugService = new BugService();

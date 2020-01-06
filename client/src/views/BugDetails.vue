@@ -17,7 +17,7 @@
         <router-link :to="{ name: 'home' }">
           <h1>All B<img alt="Vue logo" src="../assets/logo.png" />gs</h1>
         </router-link>
-         <form @submit.prevent="addNote">
+         <form @submit.prevent="createNote">
           <input type="text" placeholder="message" v-model="newNote.content" required>
           <input type="text" placeholder="name" v-model="newNote.reportedBy" required>
           <button type="submit">Submit</button>
@@ -27,7 +27,9 @@
     
     <main class="text-left">
     <h2>Title</h2>
+    <!--<router-link :to="{ name: 'editBug', params: { id: bugData.id } }">-->
     <h1>{{ bug.title }}</h1>
+    <!--</router-link>-->
     <h3>Reported By:{{ bug.reportedBy }}</h3>
     <h4>{{ bug.comment}} </h4>
     </main>
@@ -48,7 +50,7 @@
         </div>
       </div>
     <main class="row-notes">
-        <div class="col-12" v-for="note in notes" :key="note.id">
+        <div class="col-12" v-for="note in activeNote" :key="note.id">
           <!-- Props are data passed from parent to child with :propName="DATA" -->
           <note-component :noteData="note" />
         </div>
@@ -58,9 +60,12 @@
 </template>
 
 <script>
-//  import NoteComponent from "@components/Note";
+import NoteComponent from "@/components/Note.vue";
+
 export default {
   name: "bugDetails",
+  name: "notes",
+  //props: ["bugData"],
 
   data() {
     return {
@@ -69,30 +74,31 @@ export default {
         bug: this.$route.params.id,
         reportedBy:"",
         flagged: ["pending", "completed", "rejected"].toString
-      },
-       
+      },    
     }
   },
+
   mounted() {
     this.$store.dispatch("getBugById", this.$route.params.id);
     this.$store.dispatch("getNotesByBugId", this.$route.params.id);
-
   },
 
   computed: {
     bug() {
       return this.$store.state.activeBug;
     },
-    notes() {
+    //used to be notes
+    activeNote() {
       return this.$store.state.activeNote;
     }
   },
 
-  // components: {
-  //   NoteComponent
-  // },
+  components: {
+    NoteComponent
+  },
+
   methods: {
-    addNote() {
+    createNote() {
       let note =  {...this.newNote};
       this.$store.dispatch("createNote", note);
       this.newNote = {

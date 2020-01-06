@@ -1,5 +1,6 @@
 import express from "express";
 import noteService from "../services/NoteService";
+import bugService from "../services/BugService";``
 
 export default class NoteController {
   constructor() {

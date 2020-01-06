@@ -51,7 +51,7 @@
       
 
     <main class="row-bugs">
-        <div class="col-12" v-for="bug in bugs" :key="bug.id">
+        <div class="col-12" v-for="bug in bugs" :key="bug.id"> <!--should this be for bug in newBug?-->
           <!-- Props are data passed from parent to child with :propName="DATA" -->
           <bug-component :bugData="bug" />
         </div>
@@ -63,25 +63,40 @@
 <script>
 // @ is an alias to /src
 import HelloWorld from "@/components/HelloWorld.vue";
-import BugComponent from "@/components/Bug";
+import BugComponent from "@/components/Bug.vue";
+
 export default {
   name: "home",
   name: "bugs",
+  
+    data() {
+      return {
+        newBug: {
+          title: "",
+          reportedBy: "",
+          comment: "",
+          status: "",
+          lastModified: ""
+        }
+      };
+    },
+  
   mounted() {
     //runs when the component is first put (mounted) on the dom
     this.$store.dispatch("getBugs");
   },
-  data() {
-    return {
-      newBug: {
-        title: "",
-        reportedBy: "",
-        comment: "",
-        status: "",
-        lastModified: ""
+
+    computed: {
+      bugs() {
+        return this.$store.state.bugs;
       }
-    };
-  },
+    },
+
+    components: {
+      BugComponent,
+      HelloWorld
+    },
+
   methods: {
     addBug() {
       let bug = { ...this.newBug }; //NOTE makes a copy of the bug data object
@@ -94,15 +109,6 @@ export default {
         lastModified: ""
       };
     }
-  },
-  computed: {
-    bugs() {
-      return this.$store.state.bugs;
-    }
-  },
-  components: {
-    BugComponent,
-    HelloWorld
   }
 };
 </script>
