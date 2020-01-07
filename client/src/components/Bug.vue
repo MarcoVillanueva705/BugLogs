@@ -16,12 +16,14 @@
           <p>{{ bugData.status }}</p>
           </div>
           <div class="col-2">
-          <p>{{ bugData.lastModified }}</p>
+            <!-- FIXME instead of lastmodified use the updatedAt property FIXED-->
+          <p>{{ bugData.updatedAt }}</p>
           </div>
           <div class="col-2">
+            <p v-if="bugData.closed == false" class="text-success">{{ bugData.closed }}</p>
+            <p v-else>{{ bugData.closed }}</p>
           </div>
         </div>
-
   
 </template>
 
@@ -34,10 +36,7 @@ export default {
     //   return this.bugData.status.toUpperCase();
     // } | 
   },
-  // methods: {
-  //   sold() {
-  //     this.$store.dispatch("sold", this.carData.id);
-  //   }
-  // }
+  
 };
 </script>
+

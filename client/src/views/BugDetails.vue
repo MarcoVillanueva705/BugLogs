@@ -32,6 +32,7 @@
     <!--</router-link>-->
     <h3>Reported By:{{ bug.reportedBy }}</h3>
     <h4>{{ bug.comment}} </h4>
+    <button type ="button" @click="check">Close Comment</button>
     </main>
     
     <footer>
@@ -49,6 +50,7 @@
         <h4 class="float-right">Delete</h4>
         </div>
       </div>
+      
     <main class="row-notes">
         <div class="col-12" v-for="note in activeNote" :key="note.id">
           <!-- Props are data passed from parent to child with :propName="DATA" -->
@@ -98,6 +100,8 @@ export default {
   },
 
   methods: {
+    //FIXME add close method to dispatch to store FIXED!
+    //FIXME add prompt to user for closing bug(refer to taskmaster) FIXED!
     createNote() {
       let note =  {...this.newNote};
       this.$store.dispatch("createNote", note);
@@ -107,8 +111,20 @@ export default {
         reportedBy:"",
         flagged: ["pending", "completed", "rejected"].toString
       };
+    },
+
+    check() {
+      let bugRemove = confirm("Close This Bug?");
+       if (bugRemove == true) {
+      //bugData.id is an argument, over in state bugId is a parameter that will accept this argument,
+      //regardless of syntax
+      this.$store.dispatch("check", this.bug.id);
+      } else {
+      this.$store.dispatch("getBugById", this.$route.params.id);
     }
   }
+  }
+  
 };
 </script>
 

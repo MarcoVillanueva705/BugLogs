@@ -11,6 +11,7 @@ export default class BugController {
       .get("/:id", this.getById)
       .post("", this.create) //api/bugs
       .get("/:id/notes", this.getNotesByBugId)//returns all notes for a given bug id
+      .delete("/:id", this.delete);
   }
 
   async getAll(req, res, next) {
@@ -55,6 +56,16 @@ async create(req, res, next) {
     } catch (error) {
       next(error);
     }
-
   }
+
+  async delete(req, res, next) {
+    try {
+      await bugService.delete(req.params.id);
+      return res.send("Successfully Deleted");
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  //FIXME add close method for bug(refer to sold method on gregslist)FIXED!
 }

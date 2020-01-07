@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const Bug = new Schema(
   {
+    closed: { type: Boolean, required: true, default: false },
     title: { type: String, required: true, maxlength: 20 },
     comment: { type: String, required: true, maxlength: 200 },
     reportedBy: { type: String, required: true },

@@ -27,14 +27,23 @@ class NoteService {
 
   async getNotesByBugId(bugId) {
     
-    let data = await _repository.find({ bugId: bugId})
+    let data = await _repository.find({ bug: bugId})
 
     if (!data) {
       throw new Error("Invalid Id");
     }
+    console.log(data);
     return data;
 }
 
+async deleteNote(id) {
+  let data = await _repository.deleteOne({ _id: id });
+  if (!data) {
+    throw new ApiError("Invalid ID", 400);
+  }
+}
+
+//FIXME add delete method FIXED!
   // async edit(id, update) {
   //   let data = await _repository.findOneAndUpdate({ _id: id }, update, {
   //     new: true

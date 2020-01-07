@@ -32,7 +32,12 @@ class BugService {
     return data;
   }
  
-  
+  async delete(id) {
+    let data = await _repository.findOneAndUpdate({ _id: id }, { closed: true });
+    if (!data) {
+      throw new ApiError("Invalid ID", 400);
+    }
+  }
 }
 
 const bugService = new BugService();

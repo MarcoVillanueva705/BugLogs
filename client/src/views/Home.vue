@@ -51,8 +51,10 @@
       
 
     <main class="row-bugs">
-        <div class="col-12" v-for="bug in bugs" :key="bug.id"> <!--should this be for bug in newBug?-->
+        <div class="col-12" :class="{ switch: bug.closed == true}" v-for="bug in bugs" :key="bug.id"> <!--should this be for bug in newBug?-->
           <!-- Props are data passed from parent to child with :propName="DATA" -->
+          <!-- FIXME add :class binding to add a class based on the bug status FIXED!-->
+          <!-- IE :class="{ classname: something.property == true}" -->
           <bug-component :bugData="bug" />
         </div>
     </main>
@@ -73,6 +75,7 @@ export default {
       return {
         newBug: {
           title: "",
+          closed: true,
           reportedBy: "",
           comment: "",
           status: "",
@@ -103,6 +106,7 @@ export default {
       this.$store.dispatch("addBug", bug);
       this.newBug = {
         title: "",
+        closed: true,
         reportedBy: "",
         comment: "",
         status: "",
@@ -112,3 +116,11 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+
+.switch {
+color: red;
+}
+
+</style>
