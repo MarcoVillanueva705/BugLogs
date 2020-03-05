@@ -5,14 +5,14 @@
         <h1>Bug Tracker</h1>
       </div>
       <div class="col-6">
-      <form @submit.prevent="addBug">
+      <!-- <form @submit.prevent="addBug">
       <input required type="text" placeholder="title" v-model="newBug.title" />
       <input required type="text" placeholder="reported by" v-model="newBug.reportedBy" />
       <input required type="text" placeholder="comment" v-model="newBug.comment" />
       <input required type="text" placeholder="status" v-model="newBug.status" />
       <input required type="text" placeholder="last modified" v-model="newBug.lastModified" />
-      <button class="btn btn-success" type="submit">Report A Bug</button>
-      </form>
+      </form> -->
+      <button class="btn btn-success" @click="addBug">Report A Bug</button>
       </div>
       
       <div class="col-4">
@@ -73,6 +73,8 @@
 // @ is an alias to /src
 import HelloWorld from "@/components/HelloWorld.vue";
 import BugComponent from "@/components/Bug.vue";
+import NotificationService from "../NotificationService.js";
+
 
 export default {
   name: "home",
@@ -130,20 +132,21 @@ export default {
   //   },
 
 
-  //   async addBug() {
-  //     let taskInfo = await NotificationService.inputData("Add a bug");
-  //     if (taskInfo) {
-  //       this.$store.dispatch("addBug", taskInfo);
-  //       this.newBug = {
-  //       title: "", 
-  //       closed: true,
-  //       reportedBy: "",
-  //       comment: "",
-  //       status: "",
-  //       lastModified: ""
-  //     },
-  //   }
-  // }
+    async addBug() {
+      let taskInfo = await NotificationService.inputData("Add a bug");
+      if (taskInfo) {
+        this.$store.dispatch("addBug", taskInfo);
+        this.newBug = {
+        title: "", 
+        closed: true,
+        reportedBy: "",
+        comment: "",
+        status: "",
+        lastModified: 0
+      };
+    }
+  }
+}
 };
 </script>
 

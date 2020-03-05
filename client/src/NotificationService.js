@@ -17,11 +17,12 @@ export default class NotificationService {
     try {
       const { value: formValues } = await Swal.fire({
         title,
-        html: '<input id="swal-input1" class="swal2-input">'+
-              '<input id="swal-input2" class="swal2-input">'+
-              '<input id="swal-input3" class="swal2-input">'+
-              '<input id="swal-input4" class="swal2-input">'+
-              '<input id="swal-input5" class="swal2-input">',
+        html: '<h3>Title</h3><input id="swal-input1" class="swal2-input" required>'+
+              '<h3>Reported By</h3><input id="swal-input2" class="swal2-input" required>'+
+              '<h3>Comment</h3><input id="swal-input3" class="swal2-input" required>'+
+              '<h3>Status</h3><input id="swal-input4" class="swal2-input" required>'+
+              '<h3>Last Modified</h3><input id="swal-input5" class="swal2-input" required>',
+
         focusConfirm: false,
         preConfirm: () => {
           return [
@@ -31,6 +32,7 @@ export default class NotificationService {
             document.getElementById('swal-input3').value,
             document.getElementById('swal-input4').value,
             document.getElementById('swal-input5').value
+
             // @ts-ignore
           ];
         }
