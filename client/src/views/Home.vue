@@ -5,18 +5,25 @@
         <h1>Bug Tracker</h1>
       </div>
       <div class="col-6">
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="@Report">
-        Report
-      </button>
+      <form @submit.prevent="addBug">
+      <input required type="text" placeholder="title" v-model="newBug.title" />
+      <input required type="text" placeholder="reported by" v-model="newBug.reportedBy" />
+      <input required type="text" placeholder="comment" v-model="newBug.comment" />
+      <input required type="text" placeholder="status" v-model="newBug.status" />
+      <input required type="text" placeholder="last modified" v-model="newBug.lastModified" />
+      <button class="btn btn-success" type="submit">Report A Bug</button>
+      </form>
       </div>
+      
       <div class="col-4">
         <h2>Current Bugs</h2>
       </div>
+      
       <div class="col-8">
       </div>
     </div>
    
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-12">
         <form @submit.prevent="addBug">
           <input required type="text" v-model="newBug.title" placeholder="title" />
@@ -27,7 +34,7 @@
           <button class="btn btn-success" type="submit">Add Bug</button>
         </form>
       </div>   
-    </div>
+    </div> -->
       
      <div class="row">
           <div class="col-2">
@@ -71,7 +78,7 @@ export default {
   name: "home",
   name: "bugs",
   
-    data() {
+  data() {
       return {
         newBug: {
           title: "",
@@ -101,19 +108,42 @@ export default {
     },
 
   methods: {
-    addBug() {
-      let bug = { ...this.newBug }; //NOTE makes a copy of the bug data object
-      this.$store.dispatch("addBug", bug);
-      this.newBug = {
-        title: "",
-        closed: true,
-        reportedBy: "",
-        comment: "",
-        status: "",
-        lastModified: ""
-      };
-    }
-  }
+    // addBug() {
+    //   let bug = { ...this.newBug }; //NOTE makes a copy of the bug data object
+    //   this.$store.dispatch("addBug", bug);
+    //   this.newBug = {
+    //     title: "",
+    //     closed: true,
+    //     reportedBy: "",
+    //     comment: "",
+    //     status: "",
+    //     lastModified: ""
+    //   };
+    // },
+  // async createTeam() {
+  //     let taskInfo = await NotificationService.inputData("Create a new Team");
+  //     if (taskInfo) {
+  //       this.$store.dispatch("createTeam", taskInfo);
+  //       this.newTask = { title: "" 
+  //       };
+  //     }
+  //   },
+
+
+  //   async addBug() {
+  //     let taskInfo = await NotificationService.inputData("Add a bug");
+  //     if (taskInfo) {
+  //       this.$store.dispatch("addBug", taskInfo);
+  //       this.newBug = {
+  //       title: "", 
+  //       closed: true,
+  //       reportedBy: "",
+  //       comment: "",
+  //       status: "",
+  //       lastModified: ""
+  //     },
+  //   }
+  // }
 };
 </script>
 
