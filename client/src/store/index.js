@@ -27,8 +27,8 @@ export default new Vuex.Store({
     setActiveBug(state, bug) {
       state.activeBug = bug;
     },
-    createNote(state, note) {
-      state.notes.push(note);
+    createNote(state, data) {
+      state.notes.push(data);
     },    
     setActiveNote(state, note) {
       state.activeNote = note;
@@ -47,7 +47,7 @@ export default new Vuex.Store({
       commit("setActiveBug", res.data);
     },
     async addBug({ commit, dispatch }, bug) {
-      let res = await _api.post("bugs", bug);
+      let res = await _api.post("bugs", bug );
       router.push({ path: `/bugs/${res.data.id}` });
       //FIXME use the router.push method to move to the desired route IE: push takes in a route option object { name: "routename('cars'), params: { id: car.id}"} res.data is your bug from the API FIXED!
       // dispatch("getAllBugs"); //works but is a second call to the server
@@ -55,8 +55,8 @@ export default new Vuex.Store({
     },
     async createNote({ commit, dispatch }, note) {
       let res = await _api.post("notes", note);
-      // dispatch("getAllNotes"); //works but is a second call to the server
       commit("createNote", res.data);
+      // dispatch("getNotesByBugId"); //works but is a second call to the server
     },
     async getNotesByBugId({ commit, dispatch }, id) {
       let res = await _api.get("bugs/"+ id + "/notes");

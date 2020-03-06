@@ -21,6 +21,7 @@
 export default {
   name: "Note",
   props: ["noteData"], //NOTE props come from parents
+
   computed: {
     // bugMakeUpperCase() {
     //   return this.noteData.status.toUpperCase();

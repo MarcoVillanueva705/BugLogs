@@ -92,7 +92,11 @@ export default {
     //used to be notes
     activeNote() {
       return this.$store.state.activeNote;
-    }
+    },
+
+    // notes() {
+    //   return this.$store.state.notes;
+    // }
   },
 
   components: {
