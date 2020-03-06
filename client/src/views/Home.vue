@@ -37,22 +37,20 @@
     </div> -->
       
      <div class="row">
-          <div class="col-2">
+          <div class="col-3">
           <h4>Title</h4>
           </div>
-          <div class="col-2">
+          <div class="col-3">
           <h4>Reported By</h4>
           </div>
-          <div class="col-2">
+          <!-- <div class="col-2">
           <h4>Comment</h4>
-          </div>
-          <div class="col-2">
+          </div> -->
+          <div class="col-3">
           <h4>Status</h4>
           </div>
-          <div class="col-2">
+          <div class="col-3">
           <h4>Last Modified</h4>
-          </div>
-          <div class="col-2">
           </div>
       </div>
       
