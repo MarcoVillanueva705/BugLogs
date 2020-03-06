@@ -12,16 +12,19 @@
           <div class="col-2">
           <p>{{ bugData.comment }}</p>
           </div>
-          <div class="col-2">
+          <!-- <div class="col-2">
           <p>{{ bugData.status }}</p>
+          </div> -->
+          <div class="col-2">
+            <p v-if="bugData.closed == false" class="text-success">{{ bugData.closed }}</p>
+            <p v-else>{{ bugData.closed }}</p>
           </div>
+
           <div class="col-2">
             <!-- FIXME instead of lastmodified use the updatedAt property FIXED-->
           <p>{{ bugData.updatedAt }}</p>
           </div>
           <div class="col-2">
-            <p v-if="bugData.closed == false" class="text-success">{{ bugData.closed }}</p>
-            <p v-else>{{ bugData.closed }}</p>
           </div>
         </div>
   
