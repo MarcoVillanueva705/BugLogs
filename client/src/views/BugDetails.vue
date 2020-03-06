@@ -52,7 +52,7 @@
       </div>
       
     <main class="row-notes">
-        <div class="col-12" v-for="note in activeNote" :key="note.id">
+        <div class="col-12" v-for="note in notes" :key="note.id">
           <!-- Props are data passed from parent to child with :propName="DATA" -->
           <note-component :noteData="note" />
         </div>
@@ -90,13 +90,13 @@ export default {
       return this.$store.state.activeBug;
     },
     //used to be notes
-    activeNote() {
-      return this.$store.state.activeNote;
-    },
+    // activeNote() {
+    //   return this.$store.state.activeNote;
+    // },
 
-    // notes() {
-    //   return this.$store.state.notes;
-    // }
+    notes() {
+      return this.$store.state.notes;
+    }
   },
 
   components: {
