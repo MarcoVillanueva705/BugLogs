@@ -2,15 +2,15 @@
 
       <div class="row">
           <div class="col-4">
-          <p>{{ noteData.content}}</p>
           </div>
           <div class="col-4">
           <p>{{ noteData.reportedBy }}</p>
           </div>
           <div class="col-4">
-          <p>{{ noteData.flagged }}</p>
-          <button type="button" @click="deleteNote">Submit</button>
+          <!-- <p>{{ noteData.flagged }}</p> -->
+          <p>{{ noteData.content}}</p>
           <!-- FIXME Add a delete button or icon tied to your delete method FIXED!-->
+          <button type="button" class="btn btn-danger" @click="deleteNote">Delete</button>
           </div>
         </div>
 
