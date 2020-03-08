@@ -46,13 +46,13 @@
         <div class="col-4">
         <h4 class="text-center">Message</h4>
         </div>
-        <div class="col-3">
+        <!-- <div class="col-3">
         <h4 class="float-right">Delete</h4>
-        </div>
+        </div> -->
       </div>
       
     <main class="row-notes">
-        <div class="col-12" v-for="note in notes" :key="note.id" :note="note">
+        <div class="col-12" v-for="note in notes" :key="note.id" :note="note" >
           <!-- Props are data passed from parent to child with :propName="DATA" -->
           <note-component :noteData="note" />
         </div>
@@ -95,7 +95,7 @@ export default {
     // },
 
     notes() {
-      return this.$store.state.notes;
+      return this.$store.state.activeNote;
     }
   },
 
