@@ -34,6 +34,8 @@ export default {
       //noteData.id is an argument, over in state noteId is a parameter that will accept this argument,
       //regardless of syntax
       this.$store.dispatch("deleteNote", this.noteData.id);
+      this.$store.dispatch("getNotesByBugId", this.$route.params.id);
+
       } else {
       this.$store.dispatch("getNotesByBugId", this.$route.params.id);
     }

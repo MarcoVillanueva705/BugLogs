@@ -109,12 +109,14 @@ export default {
     createNote() {
       let note =  {...this.newNote};
       this.$store.dispatch("createNote", note);
+      // this.$store.state.dispatch("getNotesByBugId");
       this.newNote = {
         content: "",
         bug: this.$route.params.id,
         reportedBy:"",
         flagged: ["pending", "completed", "rejected"].toString
       };
+
     },
 
     check() {
