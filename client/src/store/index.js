@@ -56,7 +56,7 @@ export default new Vuex.Store({
     async createNote({ commit, dispatch }, note) {
       let res = await _api.post("notes", note);
       commit("createNote", res.data);
-      // dispatch("getNotesByBugId"); //works but is a second call to the server
+      dispatch("getNotesByBugId"); //works but is a second call to the server
     },
     async getNotesByBugId({ commit, dispatch }, id) {
       let res = await _api.get("bugs/"+ id + "/notes");
