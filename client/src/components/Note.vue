@@ -4,11 +4,11 @@
           <div class="col-4">
           </div>
           <div class="col-4">
-          <p>{{ noteData.reportedBy }}</p>
+          <p>{{ notes.reportedBy }}</p>
           </div>
           <div class="col-4">
           <!-- <p>{{ noteData.flagged }}</p> -->
-          <p>{{ noteData.content}}</p>
+          <p>{{ notes.content}}</p>
           <!-- FIXME Add a delete button or icon tied to your delete method FIXED!-->
           <button type="button" class="btn btn-danger" @click="deleteNote">Delete</button>
           </div>
@@ -26,6 +26,9 @@ export default {
     // bugMakeUpperCase() {
     //   return this.noteData.status.toUpperCase();
     // } | 
+    notes() {
+      return this.$store.state.activeNote;
+    }
   },
    methods: {
     deleteNote() {
