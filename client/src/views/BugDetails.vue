@@ -51,14 +51,15 @@
         </div> -->
       </div>
       
-    <main class="row-notes">
-        <div class="col-12" v-for="note in notes" :key="note.id" :note="note" >
+    <div class="row-notes">
+
+        <note-component v-for="note in notes" :key="note.id" :note="note" />
          <!-- <h3>{{notes.reportedBy}}</h3>  -->
           <!-- <h3>{{notes.content}}</h3> -->
           <!-- Props are data passed from parent to child with :propName="DATA" -->
-          <note-component :noteData="note" />
-        </div>
-    </main>
+          <!-- <note-component :noteData="notes" /> -->
+        <!-- </div> -->
+    </div>
     </footer>
   </div>
 </template>
