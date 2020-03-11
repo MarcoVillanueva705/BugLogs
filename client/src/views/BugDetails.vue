@@ -53,7 +53,7 @@
       
     <div class="row-notes">
 
-        <note-component v-for="note in notes" :key="note.id" :note="note" />
+        <note-component v-for="note in notes" :key="note.id" :noteData="note" /><!--this is from Note component props[noteData]-->
          <!-- <h3>{{notes.reportedBy}}</h3>  -->
           <!-- <h3>{{notes.content}}</h3> -->
           <!-- Props are data passed from parent to child with :propName="DATA" -->

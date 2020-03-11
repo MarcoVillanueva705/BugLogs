@@ -9,7 +9,7 @@
           </div>
           <div class="col-4">
           <!-- <p>{{ noteData.flagged }}</p> -->
-          <!-- <p>{{ notes.content}}</p> -->
+          <p>{{ noteData.content}}</p><!--this is the props content-->
           <!-- FIXME Add a delete button or icon tied to your delete method FIXED!-->
           <button type="button" class="btn btn-danger" @click="deleteNote">Delete</button>
           </div>

@@ -14,7 +14,7 @@ export default new Vuex.Store({
   state: {
     bugs: [],
     activeBug: {},
-    notes: [],
+    notes: {},
     activeNote: {}
   },
   mutations: {
@@ -28,7 +28,9 @@ export default new Vuex.Store({
       state.activeBug = bug;
     },
     createNote(state, note) {
-      state.notes.push(note);
+      // debugger
+      state.activeNote.push(note);//was previously pushing to notes as an []
+      // Vue.set(state.notes, note.bug, note)
     },    
     setActiveNote(state, note) {
       state.activeNote = note;
