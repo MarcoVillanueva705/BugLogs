@@ -5,7 +5,7 @@
           <div class="col-4">
           </div>
           <div class="col-4">
-          <!-- <p>{{ notes.reportedBy }}</p> -->
+          <p>{{ noteData.reportedBy }}</p>
           </div>
           <div class="col-4">
           <!-- <p>{{ noteData.flagged }}</p> -->

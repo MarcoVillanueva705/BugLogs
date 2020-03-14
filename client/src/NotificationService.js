@@ -51,6 +51,41 @@ export default class NotificationService {
       return false;
     }
   }
+
+  static async inputNote(title = "Add a note") {
+    try {
+      const { value: formValues } = await Swal.fire({
+        title,
+        html: '<h3>Message</h3><input id="swal-input1" class="swal2-input" required>'+
+              // '<h3>Bug</h3><input id="swal-input2" class="swal2-input" required>'+
+              '<h3>Name</h3><input id="swal-input2" class="swal2-input" required>',
+              
+        focusConfirm: false,
+        preConfirm: () => {
+          return [
+            // @ts-ignore
+            document.getElementById("swal-input1").value,
+            document.getElementById('swal-input2').value,
+            // document.getElementById('swal-input3').value
+
+
+            // @ts-ignore
+          ];
+        }
+      });
+      // console.log(formValues)
+      // debugger
+      if (formValues) {
+        return { content: formValues[0],
+                  bug: this.$route.params.id,
+                  // bug: formValues[1],   
+                  reportedBy: formValues[1]
+        };
+      }
+    } catch (error) {
+      return false;
+    }
+  }
   // static async inputList(title = "Enter Inputs") {
   //   try {
   //     const { value: formValues } = await Swal.fire({

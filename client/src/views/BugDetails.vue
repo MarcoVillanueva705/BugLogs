@@ -6,9 +6,11 @@
         <h1>Bug Tracker</h1>
       </div>
       <div class="col-6">
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="@Report">
+        <!-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="@Report">
         Report
-      </button>
+      </button> -->
+        <button class="btn btn-success" @click="createNote">Add Note</button>
+
       </div>
     </div>
     
@@ -17,11 +19,11 @@
         <router-link :to="{ name: 'home' }">
           <h1>All B<img alt="Vue logo" src="../assets/logo.png" />gs</h1>
         </router-link>
-         <form @submit.prevent="createNote">
+         <!-- <form @submit.prevent="createNote">
           <input type="text" placeholder="message" v-model="newNote.content" required>
           <input type="text" placeholder="name" v-model="newNote.reportedBy" required>
           <button type="submit">Submit</button>
-         </form>
+         </form> -->
       </div>
     </header>
     
@@ -66,6 +68,7 @@
 
 <script>
 import NoteComponent from "@/components/Note.vue";
+import NotificationService from "../NotificationService.js";
 
 export default {
   name: "bugDetails",
@@ -111,18 +114,31 @@ export default {
   methods: {
     //FIXME add close method to dispatch to store FIXED!
     //FIXME add prompt to user for closing bug(refer to taskmaster) FIXED!
-    createNote() {
-      let note =  {...this.newNote};
-      this.$store.dispatch("createNote", note);
-      // this.$store.state.dispatch("getNotesByBugId");
-      this.newNote = {
-        content: "",
-        bug: this.$route.params.id,
-        reportedBy:"",
-        flagged: ["pending", "completed", "rejected"].toString
-      };
+    // createNote() {
+    //   let note =  {...this.newNote};
+    //   this.$store.dispatch("createNote", note);
+    //   // this.$store.state.dispatch("getNotesByBugId");
+    //   this.newNote = {
+    //     content: "",
+    //     bug: this.$route.params.id,
+    //     reportedBy:"",
+    //     flagged: ["pending", "completed", "rejected"].toString
+    //   };
 
-    },
+    // },
+    async createNote() {
+      let taskInfo = await NotificationService.inputNote("Add a note");
+      if (taskInfo) {
+        this.$store.dispatch("createNote", taskInfo);
+        this.newNote = {
+        content: "", 
+        bug: this.$route.params.id,
+        reportedBy: "",
+        flagged: ["pending", "completed", "rejected"].toString
+        
+      };
+    }
+  },
 
     check() {
       let bugRemove = confirm("Close This Bug?");
