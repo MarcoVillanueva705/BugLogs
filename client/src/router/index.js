@@ -4,6 +4,7 @@ import VueRouter from "vue-router";
 import Home from "../views/Home";
 //@ts-ignore
 import BugDetails from "../views/BugDetails";
+import Login from '../views/Login.vue';
 
 
 Vue.use(VueRouter);
@@ -39,6 +40,14 @@ const routes = [
     path: "/notes",
     name: "bugDetails",
     component: BugDetails
+
+  },
+
+  {
+
+    path: '/login',
+    name: 'login',
+    component: Login
 
   },
 
