@@ -36,11 +36,23 @@ server.use(bp.json());
 
 //NOTE next we want to register all our routes(doorways that can be accessed in our app)
 
+
+//REGISTER YOUR SESSION, OTHERWISE YOU WILL NEVER GET LOGGED IN
+
+import UserController from './controllers/UserController'
+
+import Session from "./middleware/session"
+
+server.use(new Session().express)
+
+server.use('/account', new UserController().router)
+
 //NOTE we have to import access to our controllers
 
 //NOTE remember the forward slash at the start of your path!
 server.use("/api/bugs", new BugController().router);
 server.use("/api/notes", new NoteController().router);
+
 
 //NOTE Everything below this line always stays the same
 
