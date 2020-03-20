@@ -1,6 +1,7 @@
 import express from "express";
 import noteService from "../services/NoteService";
 import bugService from "../services/BugService";``
+import { Authorize } from '../middleware/authorize.js'
 
 export default class NoteController {
   constructor() {
