@@ -1,5 +1,6 @@
 <template>
 
+<div class="content">
   <div class="login">
 
     <form v-if="loginForm" @submit.prevent="loginUser">
@@ -42,6 +43,7 @@
     </div>
 
   </div>
+</div>
 
 </template>
 
@@ -118,16 +120,24 @@ export default {
 <style>
 
 .action {
-
   cursor: pointer;
-
 }
 
 * {
   box-sizing: border-box;
 }
+
 .md-form {
   min-width: 45%;
+}
+
+.content {
+  position: fixed;
+  top: 250px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  min-width: 100%;
+  padding: 20px;
 }
 
 </style>
