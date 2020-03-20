@@ -7,11 +7,13 @@ export default class BugController {
     this.router = express
       .Router({ mergeParams: true }) 
       //NOTE  each route gets registered as a .get, .post, .put, or .delete, the first parameter of each method is a string to be concatinated onto the base url registered with the route in main. The second parameter is the method that will" be run when this route is hit.
+      .use(Authorize.authenticated)
       .get("", this.getAll)
       .get("/:id", this.getById)
       .post("", this.create) //api/bugs
       .get("/:id/notes", this.getNotesByBugId)//returns all notes for a given bug id
-      .delete("/:id", this.delete);
+      .delete("/:id", this.delete)
+      .use(this.defaultRoute)
   }
 
   async getAll(req, res, next) {
