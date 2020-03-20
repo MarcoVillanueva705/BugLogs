@@ -5,12 +5,14 @@ import bugService from "../services/BugService";``
 export default class NoteController {
   constructor() {
     this.router = express
-      .Router({ mergeParams: true }) 
+      .Router({ mergeParams: true })
+      .use(Authorize.authenticated) 
       //NOTE  each route gets registered as a .get, .post, .put, or .delete, the first parameter of each method is a string to be concatinated onto the base url registered with the route in main. The second parameter is the method that will be run when this route is hit.
       // .get("", this.getAll)
       // .get("/:id", this.getById)
       .post("", this.createNote) //api/notes
-      .delete("/:id", this.deleteNote);
+      .delete("/:id", this.deleteNote)
+      .use(this.defaultRoute)
 
       //FIXME add delete route and method FIXED!
   }
