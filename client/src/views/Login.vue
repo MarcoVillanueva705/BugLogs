@@ -3,14 +3,23 @@
   <div class="login">
 
     <form v-if="loginForm" @submit.prevent="loginUser">
+      <div class="d-flex justify-content-center">
+        <div class="md-form">
+          <i class="fas fa-envelope prefix"></i>
+      <input type="email" v-model="creds.email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="Email" />
+      <label for="defaultLoginFormEmail" data-error="wrong" data-success="right">Enter Email Address</label>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center">
+        <div class="md-form">
+          <i class="fas fa-lock prefix"></i>
+      <input type="password" v-model="creds.password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password" />
+      <label for="defaultLoginFormPassword" data-error="wrong" data-success="right">Enter Your Password</label>
 
-      <input type="email" v-model="creds.email" placeholder="email" />
-
-      <input type="password" v-model="creds.password" placeholder="password" />
-
-      <button class="btn btn-success" type="submit">Login</button>
-
-    </form>
+      <button class="btn btn-success my-4 d-flex justify-content-center" type="submit">Login</button>
+        </div>
+      </div>
+ </form>
 
     <form v-else @submit.prevent="register">
 
@@ -112,6 +121,13 @@ export default {
 
   cursor: pointer;
 
+}
+
+* {
+  box-sizing: border-box;
+}
+.md-form {
+  min-width: 45%;
 }
 
 </style>
