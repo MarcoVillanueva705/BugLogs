@@ -6,14 +6,14 @@
     <form v-if="loginForm" @submit.prevent="loginUser">
       <div class="d-flex justify-content-center">
         <div class="md-form">
-          <i class="fas fa-envelope prefix"></i>
+          <i class="fas fa-envelope prefix float-left"></i>
       <input type="email" v-model="creds.email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="Email" />
       <label for="defaultLoginFormEmail" data-error="wrong" data-success="right">Enter Email Address</label>
         </div>
       </div>
       <div class="d-flex justify-content-center">
         <div class="md-form">
-          <i class="fas fa-lock prefix"></i>
+          <i class="fas fa-lock prefix float-left"></i>
       <input type="password" v-model="creds.password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password" />
       <label for="defaultLoginFormPassword" data-error="wrong" data-success="right">Enter Your Password</label>
 
@@ -23,16 +23,31 @@
  </form>
 
     <form v-else @submit.prevent="register">
-
+      <div class="d-flex justify-content-center">
+        <div class="md-form">
+          <i class="fas fa-user prefix float-left"></i>
       <input type="text" v-model="newUser.name" placeholder="name" />
+      <label>Enter Your Name</label>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center">
+        <div class="md-form">
+          <i class="fas fa-envelope prefix float-left"></i>
+            <input type="email" v-model="newUser.email" placeholder="email" />
+            <label>Enter Email Address</label>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center">
+        <div class="md-form">
+          <i class="fas fa-lock prefix float-left"></i>
+            <input type="password" v-model="newUser.password" placeholder="password" />
+            <label>Enter Your Password</label>
 
-      <input type="email" v-model="newUser.email" placeholder="email" />
-
-      <input type="password" v-model="newUser.password" placeholder="password" />
-
-      <button class="btn btn-warning" type="submit">Create Account</button>
-
+      <button class="btn btn-success my-4 d-flex justify-content-center" type="submit">Create Account</button>
+        </div>
+      </div>
     </form>
+   
 
     <div class="action" @click="loginForm = !loginForm">
 
