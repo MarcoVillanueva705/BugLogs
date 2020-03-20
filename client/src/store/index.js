@@ -118,6 +118,7 @@ export default new Vuex.Store({
     async deleteNote({ commit, dispatch }, noteId) {
       let res = await _api.delete("notes/"+ noteId);
       commit("deleteActiveNote", res.data);
+      //dispatch("getBugById")
     },
 //close action for bug
     async check({ commit, dispatch }, id) {
