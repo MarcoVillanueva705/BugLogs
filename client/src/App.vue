@@ -5,7 +5,7 @@
 
       <div class="col-6">
 
-        <i class="fas fa-umbrella-beach float-left"><b>Bug Logger</b></i>
+        <i class="fas fa-bug float-left"><b>Bug Logger</b></i>
 
       </div>
 
