@@ -1,10 +1,44 @@
 <template>
   <div id="app">
     <div id="nav"></div>
+    <div class="row logout">
+
+      <div class="col-6">
+
+        <i class="fas fa-umbrella-beach float-left"><b>Bug Logger</b></i>
+
+      </div>
+
+      <div class="col-6"><button @click="logOff()" class="float-right btn btn-warning btn-sm">Logout</button>
+
+      </div>
+
+    </div>
     <router-view />
   </div>
 </template>
 
+<script>
+
+export default {
+
+  name: "App",
+
+
+
+  methods: {
+
+    logOff() {
+
+      this.$store.dispatch("logout");
+
+    }
+
+  }
+
+};
+
+</script>
 <style>
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;

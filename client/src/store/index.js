@@ -50,6 +50,9 @@ export default new Vuex.Store({
     deleteActiveNote(state, note) {
       state.activeNote.shift(note);
     },
+    resetState(state, data) {
+      state.user = {};
+    }
   },
   actions: {
     //#region -- AUTH STUFF --
