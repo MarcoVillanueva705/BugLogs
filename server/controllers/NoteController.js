@@ -13,7 +13,8 @@ export default class NoteController {
       // .get("/:id", this.getById)
       .post("", this.createNote) //api/notes
       .delete("/:id", this.deleteNote)
-      .use(this.defaultRoute)
+      // .use(this.defaultRoute)
+
 
       //FIXME add delete route and method FIXED!
   }
@@ -62,3 +63,4 @@ async createNote(req, res, next) {
   //   }
   // }
 }
+

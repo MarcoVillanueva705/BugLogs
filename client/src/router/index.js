@@ -1,5 +1,5 @@
 import Vue from "vue";
-import VueRouter from "vue-router";
+import Router from "vue-router";
 //@ts-ignore
 import Home from "../views/Home";
 //@ts-ignore
@@ -7,9 +7,11 @@ import BugDetails from "../views/BugDetails";
 import Login from '../views/Login.vue';
 
 
-Vue.use(VueRouter);
+Vue.use(Router)
 
-const routes = [
+export default new Router({
+
+ routes : [
   {
     path: "/",
     name: "home",
@@ -62,10 +64,7 @@ const routes = [
     path: "*", //saftey net that returns bad routes back to the home
     redirect: "/"
   }
-];
+]
+})
 
-const router = new VueRouter({
-  routes
-});
 
-export default router;
