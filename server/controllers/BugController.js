@@ -14,7 +14,7 @@ export default class BugController {
       .post("", this.create) //api/bugs
       .get("/:id/notes", this.getNotesByBugId)//returns all notes for a given bug id
       .delete("/:id", this.delete)
-      .use(this.defaultRoute)
+      // .use(this.defaultRoute)
 
 
   }
