@@ -3,17 +3,14 @@ import express from "express";
 import cors from "cors";
 import bp from "body-parser";
 import DbContext from "./db/dbConfig";
-import BugController from "./controllers/BugController";
-import NoteController from "./controllers/NoteController";
-
-const port = process.env.PORT || 3000;
 
 //NOTE next we need to create our server
-let server = express();
+const server = express();
 
 //NOTE Fire up database connection
 DbContext.connect();
 
+const port = process.env.PORT || 3000;
 //NOTE Creates a reference to the build project on the client (if api only remove this line)
 server.use(express.static(__dirname + "/../client/dist"));
 
@@ -29,8 +26,8 @@ var corsOptions = {
 server.use(cors(corsOptions));
 
 //NOTE we are giving our server the bodyparser middleware. This middleware gives use the ability to pass information into our server as a request and parse it from JSON back into objects.
-server.use(bp.urlencoded({ extended: true }));
 server.use(bp.json());
+server.use(bp.urlencoded({ extended: true }));
 
 //NOTE Everything above this line always stays the same
 
@@ -40,14 +37,14 @@ server.use(bp.json());
 //REGISTER YOUR SESSION, OTHERWISE YOU WILL NEVER GET LOGGED IN
 
 import UserController from './controllers/UserController'
-
 import Session from "./middleware/session"
-
 server.use(new Session().express)
-
 server.use('/account', new UserController().router)
 
 //NOTE we have to import access to our controllers
+
+import BugController from "./controllers/BugController";
+import NoteController from "./controllers/NoteController";
 
 //NOTE remember the forward slash at the start of your path!
 server.use("/api/bugs", new BugController().router);
@@ -76,7 +73,7 @@ server.use((error, req, res, next) => {
 });
 
 //NOTE Catch all to insure to return 404 if recieved a bad route
-server.use((req, res, next) => {
+server.use('*', (req, res, next) => {
   res.status(404).send("Route not found");
 });
 

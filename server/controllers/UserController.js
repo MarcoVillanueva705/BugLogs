@@ -25,9 +25,7 @@ export default class UserController {
 
             .delete('/logout', this.logout)
 
-            // .use(this.defaultRoute)
-
-
+            .use(this.defaultRoute)
 
     }
 

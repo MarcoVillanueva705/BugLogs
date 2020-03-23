@@ -14,9 +14,12 @@ export default class BugController {
       .post("", this.create) //api/bugs
       .get("/:id/notes", this.getNotesByBugId)//returns all notes for a given bug id
       .delete("/:id", this.delete)
-      // .use(this.defaultRoute)
+      .use(this.defaultRoute)
+  }
 
-
+   // this is pretty neat
+   defaultRoute(req, res, next) {
+    next({ status: 404, message: 'No Such Route' })
   }
 
   async getAll(req, res, next) {

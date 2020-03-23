@@ -13,7 +13,7 @@ export default new Router({
 
  routes : [
   {
-    path: "/",
+    path: "/bugs",
     name: "home",
     component: Home
   },
@@ -47,7 +47,7 @@ export default new Router({
 
   {
 
-    path: '/login',
+    path: '/',
     name: 'login',
     component: Login
 
