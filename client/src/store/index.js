@@ -14,7 +14,7 @@ Vue.use(Vuex)
 
 //Allows axios to work locally or live
 
-let base = window.location.host.includes('localhost:8080') ? '//localhost:3000/' : '/'
+let base = window.location.host.includes('localhost:8080') ? '//localhost:3000/' : '/login'
 
 export default new Vuex.Store({
   state: {
