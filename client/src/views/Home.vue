@@ -1,4 +1,4 @@
-<template v-if="loggedIn == true">
+<template v-if="loggedIn">
   <div class="home container-fluid" >
     <div class="row">
       <div class="col-6">
