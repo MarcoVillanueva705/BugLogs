@@ -1,5 +1,5 @@
-<template>
-  <div class="home container-fluid">
+<template v-if "loggedIn">
+  <div class="home container-fluid" >
     <div class="row">
       <div class="col-6">
         <h1>Bug Tracker</h1>
@@ -99,6 +99,9 @@ export default {
     computed: {
       bugs() {
         return this.$store.state.bugs;
+      },
+      loggedIn() {
+        return this.$store.state.user;
       }
     },
 
