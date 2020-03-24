@@ -1,4 +1,4 @@
-<template v-if "loggedIn">
+<template>
   <div class="home container-fluid" >
     <div class="row">
       <div class="col-6">
@@ -99,10 +99,10 @@ export default {
     computed: {
       bugs() {
         return this.$store.state.bugs;
-      },
-      loggedIn() {
-        return this.$store.state.user;
       }
+      // loggedIn() {
+      //   return this.$store.state.user;
+      // }
     },
 
     components: {
