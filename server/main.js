@@ -56,16 +56,16 @@ server.use("/api/notes", new NoteController().router);
 
 // NOTE DO NOT touch! This is for testing only
 
-import cleanupService from "./utils/CleanupService";
+// import cleanupService from "./utils/CleanupService";
 
-server.get('/cleanup', async (req, res, next) => {
-  try {
-    let data = await cleanupService.cleanupAsync()
-    res.send(data)
-  } catch (e) {
-    next(e)
-  }
-})
+// server.get('/cleanup', async (req, res, next) => {
+//   try {
+//     let data = await cleanupService.cleanupAsync()
+//     res.send(data)
+//   } catch (e) {
+//     next(e)
+//   }
+// })
 
 //NOTE Default error handler, catches all routes with an error attached
 server.use((error, req, res, next) => {
