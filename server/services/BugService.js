@@ -5,16 +5,16 @@ import ApiError from "../utils/ApiError";
 const _repository = mongoose.model("Bug", Bug);
 
 class BugService {
-  async getAll() {
-    return await _repository.find({});
+  async getAll(userId) {
+    return await _repository.find({authorId:userId});
   }
-
-  async getById(id) {
-    let data = await _repository.findById(id);
+  
+  async getById(id, userId) {
+    let data = await _repository.findOne({ _id: id, authorId: userId })
     if (!data) {
-     throw new ApiError("Invalid ID", 400);
+      throw new ApiError("Invalid ID or you do not own this board", 400)
     }
-    return data;
+    return data
   }
 
   async create(rawData) {
@@ -22,20 +22,18 @@ class BugService {
     return data;
   }
 
-  async edit(id, update) {
-    let data = await _repository.findOneAndUpdate({ _id: id }, update, {
-      new: true
-    });
+  async edit(id, userId, update) {
+    let data = await _repository.findOneAndUpdate({ _id: id, authorId: userId }, update, { new: true })
     if (!data) {
-       throw new ApiError("Invalid ID", 400);
+      throw new ApiError("Invalid ID or you do not own this board", 400);
     }
     return data;
   }
  
-  async delete(id) {
-    let data = await _repository.findOneAndUpdate({ _id: id }, { closed: true });
+  async delete(id, userId) {
+    let data = await _repository.findOneAndRemove({ _id: id, authorId: userId });
     if (!data) {
-      throw new ApiError("Invalid ID", 400);
+      throw new ApiError("Invalid ID or you do not own this board", 400);
     }
   }
 }
