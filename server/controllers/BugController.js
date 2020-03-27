@@ -5,8 +5,8 @@ import { Authorize } from '../middleware/authorize.js'
 
 export default class BugController {
   constructor() {
-    this.router = express
-      .Router({ mergeParams: true }) 
+    this.router = express.Router()
+      // .Router({ mergeParams: true }) 
       //NOTE  each route gets registered as a .get, .post, .put, or .delete, the first parameter of each method is a string to be concatinated onto the base url registered with the route in main. The second parameter is the method that will" be run when this route is hit.
       .use(Authorize.authenticated)
       .get("", this.getAll)
@@ -24,7 +24,7 @@ export default class BugController {
 
   async getAll(req, res, next) {
     try {
-      let data = await bugService.getAll();
+      let data = await bugService.getAll(req.session.uid);
       return res.send(data);
     } catch (error) {
       next(error);
@@ -32,7 +32,7 @@ export default class BugController {
   }
   async getById(req, res, next) {
     try {
-      let data = await bugService.getById(req.params.id);
+      let data = await bugService.getById(req.params.id, req.session.uid);
       return res.send(data);
     } catch (error) {
       next(error);
@@ -41,6 +41,7 @@ export default class BugController {
 async create(req, res, next) {
 
     try {
+      req.body.authorId = req.session.uid
       let data = await bugService.create(req.body);
       return res.status(201).send(data);
     } catch (error) {
@@ -50,7 +51,7 @@ async create(req, res, next) {
 
   async edit(req, res, next) {
     try {
-      let data = await bugService.edit(req.params.id);
+      let data = await bugService.edit(req.params.id, req.session.uid, req.body);
       return res.send(data);
     }catch (error) {
       next(error);
@@ -68,7 +69,7 @@ async create(req, res, next) {
 
   async delete(req, res, next) {
     try {
-      await bugService.delete(req.params.id);
+      await bugService.delete(req.params.id, req.session.uid);
       return res.send("Successfully Deleted");
     } catch (error) {
       next(error);
