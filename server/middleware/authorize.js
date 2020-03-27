@@ -1,4 +1,3 @@
-
 export class Authorize {
 
     static authenticated(req, res, next) {
@@ -12,6 +11,7 @@ export class Authorize {
             })
 
         }
+
         next()
 
     }

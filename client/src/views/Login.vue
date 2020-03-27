@@ -60,13 +60,10 @@ export default {
 }
 
 .login {
-  background-image: url("https://assets.suredone.com/1868/media-photos/inkfrog176978194-3-classic-woody-wagon-tin-sign-hot-rod-surfing-beach-party-surf-california-d21.jpg?v1");
+  background-image: url("https://www.edatasource.com/wp-content/uploads/2019/07/commandcenter_blog.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
 }
 
-.white {
-  color: blanchedalmond;
-}
 </style
