@@ -20,4 +20,3 @@ export default class DbContext {
     }
 }
 
-NOTE //try running app now
