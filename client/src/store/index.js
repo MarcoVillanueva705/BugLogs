@@ -6,6 +6,7 @@ import AuthService from '../AuthService'
 
 let _api = axios.create({
   baseURL: "http://localhost:3000/api",
+  withCredentials: true,
   timeout: 8000
 });
 
@@ -32,6 +33,7 @@ export default new Vuex.Store({
     },
     setAllBugs(state, data) {
       state.bugs = data;
+      console.log(data)
     },
     addBug(state, bug) {
       state.bugs.push(bug);
