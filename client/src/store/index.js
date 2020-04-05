@@ -6,7 +6,7 @@ import AuthService from '../AuthService'
 
 let _api = axios.create({
   baseURL: "http://localhost:3000/api",
-  withCredentials: true,
+  withCredentials: true,//continue to troubleshoot
   timeout: 8000
 });
 
